@@ -15,14 +15,14 @@ Functions
 4.	The system can sort the records according to user’s input like type, date, etc
 5.	The system can calculate some statistic for the user like monthly income, percentage of each type of transaction, etc
 6.	User can set an amount of budget. When the expenses reach the budget, the system will alert the user
-7.	-----------New function------------
+7.	The system secure the data as it requires a password to unlock the data
 
 Input/Output specifications
-Input:	date		type		amount		payment method
-    date		type		amount		payment method
-		date		type		amount		payment method
-		…(until user input “-1”)
-		What to output(monthly_income / percentage type / records)
+Input:
+date type amount payment method
+date type amount payment method
+…(until user input “-1”)
+What to output(monthly_income / percentage type / records)
 Output:	monthly income / percentage / …
 
 Compilation and execution instructions
