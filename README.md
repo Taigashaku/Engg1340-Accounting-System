@@ -1,6 +1,7 @@
 # Engg1340-Accounting-System
 
 Problem statement
+
 Help users to manage their financial status like adding records, editing and removing records, sorting the records according to users’ input.
 
 Problem setting
@@ -18,12 +19,19 @@ Functions
 7.	The system secure the data as it requires a password to unlock the data
 
 Input/Output specifications
+
 Input:
+
 date type amount payment method
+
 date type amount payment method
+
 …(until user input “-1”)
+
 What to output(monthly_income / percentage type / records)
-Output:	monthly income / percentage / …
+
+Output:
+monthly income / percentage / …
 
 Compilation and execution instructions
 
