@@ -7,7 +7,7 @@ Help users to manage their financial status like adding records, editing and rem
 Problem setting
 Assumption
 1.	Amount by user input does not exceed 2147483647.
-2.	All inputs from user are valid 
+2.	All inputs from user are valid and they follow the format.
 
 Functions
 1.	Record the income and expenses of the user
@@ -16,7 +16,7 @@ Functions
 4.	The system can sort the records according to user’s input like type, date, etc
 5.	The system can calculate some statistic for the user like monthly income, percentage of each type of transaction, etc
 6.	User can set an amount of budget. When the expenses reach the budget, the system will alert the user
-7.	The system secure the data as it requires a password to unlock the data
+7.	A user authentication system: Users are allowed to register and set password for individual account, using the account to access their own data. The system secure the data as it requires a password to unlock the data
 
 Input/Output specifications
 
@@ -34,4 +34,6 @@ Output:
 monthly income / percentage / …
 
 Compilation and execution instructions
+
+The program will first ask for the registration of user if no accounts has been registered before. After logging in the system with password, the system allows users to type in different commands to manipulate their data.
 
