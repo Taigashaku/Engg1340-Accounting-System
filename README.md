@@ -37,3 +37,20 @@ Compilation and execution instructions
 
 The program will first ask for the registration of user if no accounts has been registered before. After logging in the system with password, the system allows users to type in different commands to manipulate their data.
 
+Commands:
+
+add
+
+delete
+
+sort
+
+stat
+
+alert
+
+register
+
+login
+
+deleteac(while using the ac to be deleted)
