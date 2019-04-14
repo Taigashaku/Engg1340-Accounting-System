@@ -1,5 +1,6 @@
-struct User
+class User
 {
   string name;
   string password;
-}
+public:
+};
