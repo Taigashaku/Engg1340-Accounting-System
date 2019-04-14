@@ -1,6 +1,6 @@
 class User
 {
-  string name;
-  string password;
+  string name,password;
+  int code;
 public:
 };

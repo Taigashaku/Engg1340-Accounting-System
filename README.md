@@ -8,7 +8,7 @@ Problem setting
 Assumption
 1.	Amount by user input does not exceed 2147483647.
 2.	All inputs from user are valid and they follow the format.
-3. The Number of users are up to 200.
+3. The user's info are dynamically stored.
 
 Functions
 1.	Record the income and expenses of the user
