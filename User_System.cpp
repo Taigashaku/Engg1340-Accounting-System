@@ -1,7 +1,7 @@
 #include <iostream>
 #include <fstream>
-const int MAX = 200;
 using namespace std;
+const int MAX = 200;
 struct User{
   string name,password;
 };
@@ -11,6 +11,11 @@ int main()
   string Current_User[MAX][2];
   ifstream fin ("User_Info.txt");
   ofstream fout ("User_Info.txt");
+  if (fin.fail() || fout.fail())
+  {
+    cout<<"Error in file opening!"<<endl;
+    exit(1);
+  }
   //Get Current User Data
   for (int i=0;i<MAX;i++)
   {
@@ -63,5 +68,7 @@ int main()
     }
     fout<<New_User.name<<endl<<New_User.password<<endl;
   }
+  fin.close();
+  fout.close();
   return 0;
 }
