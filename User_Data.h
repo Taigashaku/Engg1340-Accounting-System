@@ -1,6 +1,5 @@
-class User
+struct User
 {
-  string name,password;
+  std::string name,password;
   int code;
-public:
 };

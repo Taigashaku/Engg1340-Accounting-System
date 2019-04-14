@@ -1,12 +1,9 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "User_Data.h"
 using namespace std;
 const int MAX = 200;
-struct User
-{
-  int code;
-  string name,password;
-};
 
 int main()
 {
@@ -28,7 +25,6 @@ int main()
         fin>>Current_User[i].code>>Current_User[i].name>>Current_User[i].password;
         counter++;
     }
-    cout<<counter;
     cout<<"Please login first."<<endl;
     cout<<"1.Login\n2.Register\n";
     cout<<"Your choice(1/2):\n";
