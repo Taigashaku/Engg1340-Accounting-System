@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
   Graphic_User_Interface();
-  User_System();
-  Operation();
+  int User_ID=User_System();//Get UserID
+  Operation(User_ID);
   return 0;
 }

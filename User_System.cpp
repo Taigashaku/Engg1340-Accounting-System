@@ -9,21 +9,21 @@ int main()
 {
   User Current_User[MAX];
   int status=0,counter=0;//0=offline,1=online;counter for code
-  ifstream fin ("User_Info.txt",ios::app);
-  ofstream fout ("User_Info.txt",ios::app);
-  if (fin.fail() || fout.fail())
-  {
-    cout<<"Error in file opening!"<<endl;
-    exit(1);
-  }
   //Start Procedure
   while (status==0)
   {
-    //Get Current User Data
-    for (int i=0;i<MAX;i++)
+    ifstream fin ("User_Info.txt",ios::app);
+    ofstream fout ("User_Info.txt",ios::app);
+    if (fin.fail() || fout.fail())
     {
-        fin>>Current_User[i].code>>Current_User[i].name>>Current_User[i].password;
-        counter++;
+      cout<<"Error in file opening!"<<endl;
+      exit(1);
+    }
+    //Get Current User Data
+    while (!fin.eof())
+    {
+      fin>>Current_User[counter].code>>Current_User[counter].name>>Current_User[counter].password;
+      counter++;
     }
     cout<<"Please login first."<<endl;
     cout<<"1.Login\n2.Register\n";
@@ -98,11 +98,11 @@ int main()
           cout<<"Not the same"<<endl;
         }
       }
-      fout<<New_User.name<<endl<<New_User.password<<endl;
+      fout<<counter<<endl<<New_User.name<<endl<<New_User.password<<endl;
       cout<<"New User Registered!"<<endl;
     }
+    fin.close();
+    fout.close();
   }
-  fin.close();
-  fout.close();
-  return 0;
+  return counter;
 }
