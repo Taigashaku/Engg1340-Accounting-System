@@ -3,12 +3,11 @@
 #include <vector>
 #include "User_Data.h"
 using namespace std;
-const int MAX = 200;
 
 int main()
 {
-  User Current_User[MAX];
-  int status=0,counter=0;//0=offline,1=online;counter for code
+  vector<User> Current_User;
+  int status=0,counter=0;//0=offline,others=logged UserID
   //Start Procedure
   while (status==0)
   {
@@ -20,10 +19,12 @@ int main()
       exit(1);
     }
     //Get Current User Data
+    User r;
     while (!fin.eof())
     {
-      fin>>Current_User[counter].code>>Current_User[counter].name>>Current_User[counter].password;
+      fin>>r.code>>r.name>>r.password;
       counter++;
+      Current_User.push_back(r);
     }
     cout<<"Please login first."<<endl;
     cout<<"1.Login\n2.Register\n";
@@ -39,7 +40,7 @@ int main()
       {
         cout<<"User Name: ";
         cin>>Username;
-        for (int k=0;k<MAX;k++)
+        for (int k=0;k<Current_User.size();k++)
         {
           if (Current_User[k].name==Username)
           {
@@ -64,7 +65,8 @@ int main()
         }
       }
       cout<<"Login success!"<<endl;
-      status=1;
+      status=Current_User[Pos].code;
+
     }
     else if (choice==2)//Register
     {
@@ -76,7 +78,7 @@ int main()
         Rename=1;
         cout<<"User Name: ";
         cin>>New_User.name;
-        for (int k=0;k<MAX;k++)
+        for (int k=0;k<Current_User.size();k++)
         {
           if (Current_User[k].name==New_User.name)
           {
@@ -104,5 +106,5 @@ int main()
     fin.close();
     fout.close();
   }
-  return counter;
+  return status;
 }
