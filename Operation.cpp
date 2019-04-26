@@ -76,8 +76,10 @@ int Operation(int User_ID)
 
     if (command=="4"){
       cout << "Please choose which one you would like to view" << endl;
-      cout << "1. monthly income" << endl;
-      cout << "2. percentage of transaction" << endl;
+      cout << "1. Monthly income" << endl;
+      cout << "2. Percentage of transaction" << endl;
+      cout << "3. Total income" << endl;
+      cout << "4. Total expense" << endl;
       cin >> statistic;
       if (statistic==1){
         //monthly income
@@ -140,6 +142,12 @@ int Operation(int User_ID)
         sum=0;
         total_income=0;
         total_expenses=0;
+      }
+      if (statistic==3){
+        cout << "Total income is $" << total_income << endl;
+      }
+      if (statistic==4){
+        cout << "Total expense is $" << total_expenses << endl;
       }
     }
 
