@@ -18,7 +18,7 @@ int Operation(int User_ID)
     exit(1);
   }
   string command, line, month, tran_type, income_type;
-  int statistic, budget=0, count=0, category;
+  int statistic, budget=0, count=0, category, deleteline;
   double total_income=0,total_expenses=0;
   cout << "Please input budget." << endl;
   cin >> budget;
@@ -69,7 +69,27 @@ int Operation(int User_ID)
     //command "delete"
     if (command=="2"){
       cout << "Which line of record would you like to delete?" << endl;
-
+      for (int i=1;i<=count;i++){
+        getline(fin,line);
+        cout << i << ". " << line << endl;
+      }
+      fin.clear();
+      fin.seekg(0, ios::beg);
+      cin >> deleteline;
+      for (int i=1;i<=count;i++){
+        ifstream fin (filename.c_str(),ios::app);
+        ofstream fout ("temp.txt",ios::app);
+        getline(fin,line);
+        if (i!=deleteline){
+          fout << line << endl;
+        }
+      }
+      fin.clear();
+      fin.seekg(0, ios::beg);
+      fin.close();
+      fout.close();
+      remove (filename.c_str());
+      rename ("temp.txt",filename.c_str());
     }
 
     //command "stat"
