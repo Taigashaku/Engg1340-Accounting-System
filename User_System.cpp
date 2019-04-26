@@ -4,7 +4,7 @@
 #include "User_Data.h"
 using namespace std;
 
-int main()
+int User_System()
 {
   vector<User> Current_User;
   int status=0,counter=0;//0=offline,others=logged UserID

@@ -2,13 +2,16 @@
 #include <fstream>
 #include <string>
 #include <algorithm>
+
 using namespace std;
 
-int main()
+int Operation(int User_ID)
 {
   string date, amount, type, payment_method;
-  ifstream fin ("temp.txt",ios::app);
-  ofstream fout ("temp.txt",ios::app);
+  string id=to_string(User_ID);
+  string filename="Record_"+id+".txt";
+  ifstream fin (filename.c_str(),ios::app);
+  ofstream fout (filename.c_str(),ios::app);
   if (fout.fail())
   {
     cout<<"Error in file opening!"<<endl;
@@ -20,7 +23,7 @@ int main()
   cout << "Please input budget." << endl;
   cin >> budget;
   cout << "Please input command" << endl;
-  cout << "add delete sort stat alert register login deleteac exit" << endl;
+  cout << "1.Add\n2.Delete\n3.Sort\n4.Stat\n5.Alert\n6.Exit"<< endl;
   while (cin >> command){
 
     count=0;
@@ -52,8 +55,8 @@ int main()
 
 
     //command "add"
-    if (command=="add"){
-      cout << "Please input \"date(YYYYMMDD), type, amount, payment method(please use underline to replace spacebar)\"" << endl;
+    if (command=="1"){
+      cout << "Please input \"date(YYYYMMDD), type, amount, payment method(please use underline to replace spacebar)\"\n(Input -1 to exit.)" << endl;
       while (cin >> date){
         if (date=="-1"){
           break;
@@ -64,14 +67,14 @@ int main()
     }
 
     //command "delete"
-    if (command=="delete"){
+    if (command=="2"){
       cout << "Which line of record would you like to delete?" << endl;
 
     }
 
     //command "stat"
 
-    if (command=="stat"){
+    if (command=="4"){
       cout << "Please choose which one you would like to view" << endl;
       cout << "1. monthly income" << endl;
       cout << "2. percentage of transaction" << endl;
@@ -106,7 +109,7 @@ int main()
         int sum=0;
         cout << "Please choose a type of transaction" << endl;
         cin >> tran_type;
-        cout << "Is it income or expense?" << endl;
+        cout << "1.Income\n2.Expense" << endl;
         cin >> income_type;
         while (getline(fin,line)){
           int first_space, second_space;
@@ -122,17 +125,17 @@ int main()
           }
           if (line.substr(9,line.find(" ",9)-line.find(" ")-1)==tran_type){
             int length=second_space-first_space-1;
-            if (income_type=="income" && stoi(line.substr(first_space+1,length))>0){
+            if (income_type=="1" && stoi(line.substr(first_space+1,length))>0){
               sum+=stoi(line.substr(first_space+1,length));
             }
-            else if (income_type=="expense" && stoi(line.substr(first_space+1,length))<0){
+            else if (income_type=="2" && stoi(line.substr(first_space+1,length))<0){
               sum-=stoi(line.substr(first_space+1,length));
             }
           }
         }
         fin.clear();
         fin.seekg(0, ios::beg);
-        double percentage=sum/(income_type=="income" ? total_income : total_expenses);
+        double percentage=sum/(income_type=="1" ? total_income : total_expenses);
         cout << percentage*100 << "%" << endl;
         sum=0;
         total_income=0;
@@ -140,10 +143,10 @@ int main()
       }
     }
 
-    if (command=="alert"){
+    if (command=="5"){
       cout << "Please choose which action you would like to take" << endl;
-      cout << "1. check budget" << endl;
-      cout << "2. update budget" << endl;
+      cout << "1. Check budget" << endl;
+      cout << "2. Update budget" << endl;
       cin >> statistic;
       if (statistic==1){
         cout << "Your current budget is $" << budget << "." << endl;
@@ -155,13 +158,13 @@ int main()
       }
     }
 
-    if (command=="sort"){
+    if (command=="3"){
 
-      cout << "which category would you like to sort?" << endl;
-      cout << "1. date" << endl;
-      cout << "2. type" << endl;
-      cout << "3. amount" << endl;
-      cout << "4. payment method" << endl;
+      cout << "Which category would you like to sort?" << endl;
+      cout << "1. Date" << endl;
+      cout << "2. Type" << endl;
+      cout << "3. Amount" << endl;
+      cout << "4. Payment method" << endl;
       cin >> category;
       if (category==1){
         int * array=new int [count];
@@ -381,24 +384,11 @@ int main()
         delete[] array;
       }
     }
-
-    if (command=="deleteac"){
-
-    }
-
-    if (command=="register"){
-
-    }
-
-    if (command=="login"){
-
-    }
-
-    if (command=="exit"){
-      cout << "Bye!" << endl;
+    if (command=="6"){
+      cout<<"Bye!"<<endl;
       fin.close();
       fout.close();
-      exit(1);
+      exit(0);
     }
 
     if (total_expenses>budget){
@@ -409,7 +399,7 @@ int main()
     }
 
     cout << "Please input command" << endl;
-    cout << "add delete sort stat alert register login deleteac" << endl;
+    cout << "1.Add\n2.Delete\n3.Sort\n4.Stat\n5.Alert\n6.Exit" << endl;
   }
   return 0;
 }
