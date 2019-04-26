@@ -77,8 +77,6 @@ int Operation(int User_ID)
       fin.seekg(0, ios::beg);
       cin >> deleteline;
       for (int i=1;i<=count;i++){
-        ifstream fin (filename.c_str(),ios::app);
-        ofstream fout ("temp.txt",ios::app);
         getline(fin,line);
         if (i!=deleteline){
           fout << line << endl;
@@ -90,6 +88,8 @@ int Operation(int User_ID)
       fout.close();
       remove (filename.c_str());
       rename ("temp.txt",filename.c_str());
+      ifstream fin (filename.c_str(),ios::app);
+      ofstream fout ("temp.txt",ios::app);
     }
 
     //command "stat"
