@@ -19,35 +19,33 @@ Functions
 6.	User can set an amount of budget. When the expenses reach the budget, the system will alert the user
 7.	A user authentication system: Users are allowed to register and set password for individual account, using the account to access their own data. The system secure the data as it requires a password to unlock the data
 
-Input/Output specifications
-
-Input:
-
-date type amount payment method
-
-date type amount payment method
-
-…(until user input “-1”)
-
-What to output(monthly_income / percentage type / records)
-
-Output:
-monthly income / percentage / …
-
 Compilation and execution instructions
 
 The program will first ask for the registration of user if no accounts has been registered before. After logging in the system with password, the system allows users to type in different commands to manipulate their data.
 
-Commands:
+User System:
+Login:
+If the username does not exist, the system will ask user to type again
 
-add
+Register:
+No repeated username is allowed.
+Password is needed to type twice for confirmation.
 
-delete
+Operation:
 
-sort
+Add:
+Please follow "date(YYYYMMDD), type, amount, payment method"
+Input -1 to stop adding
+E.g.: 20180101 food 1000 credit_card
 
-stat
+Delete:
+Simply list out all record and choose the row
 
-alert
+Sort:
+By date, type, amount and payment method
 
-deleteac(while using the ac to be deleted)
+Stat:
+Show monthly income, percentage of transaction(income and expense), total income and total expense.
+
+Alert:
+Show alert everytime you input commands
