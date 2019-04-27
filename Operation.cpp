@@ -88,8 +88,8 @@ int Operation(int User_ID)
       fout.close();
       remove (filename.c_str());
       rename ("temp.txt",filename.c_str());
-      ifstream fin (filename.c_str(),ios::app);
-      ofstream fout ("temp.txt",ios::app);
+      fin.open(filename.c_str(),ios::app);
+      fout.open("temp.txt",ios::app);
     }
 
     //command "stat"
