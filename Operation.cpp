@@ -11,7 +11,9 @@ int Operation(int User_ID)
   string id=to_string(User_ID);
   string filename="Record_"+id+".txt";
   ifstream fin (filename.c_str(),ios::app);
+  ifstream info_in ("User_Info.txt",ios::app);
   ofstream fout (filename.c_str(),ios::app);
+  ofstream info_out ("User_Info.txt",ios::app);
   if (fout.fail())
   {
     cout<<"Error in file opening!"<<endl;
@@ -20,8 +22,21 @@ int Operation(int User_ID)
   string command, line, month, tran_type, income_type;
   int statistic, budget=0, count=0, category, deleteline;
   double total_income=0,total_expenses=0;
-  cout << "Please input budget." << endl;
-  cin >> budget;
+  for (int i=0;i<User_ID*4-1;i++)
+  {
+    getline(info_in,line);
+  }
+  getline(info_in,line);
+  if (stoi(line)==-1)
+  {
+    cout << "Please input budget." << endl;
+    cin >> budget;
+  }
+  else
+  {
+    budget=stoi(line);
+  }
+  info_in.close();
   cout << "Please input command" << endl;
   cout << "1.Add\n2.Delete\n3.Sort\n4.Stat\n5.Alert\n6.Exit"<< endl;
   while (cin >> command){
@@ -73,23 +88,25 @@ int Operation(int User_ID)
         getline(fin,line);
         cout << i << ". " << line << endl;
       }
+      ofstream tempout ("temp.txt",ios::app);
       fin.clear();
       fin.seekg(0, ios::beg);
       cin >> deleteline;
       for (int i=1;i<=count;i++){
         getline(fin,line);
         if (i!=deleteline){
-          fout << line << endl;
+          tempout << line << endl;
+          cout<<line<<endl;
         }
       }
       fin.clear();
       fin.seekg(0, ios::beg);
       fin.close();
       fout.close();
+      tempout.close();
       remove (filename.c_str());
       rename ("temp.txt",filename.c_str());
       fin.open(filename.c_str(),ios::app);
-      fout.open("temp.txt",ios::app);
     }
 
     //command "stat"

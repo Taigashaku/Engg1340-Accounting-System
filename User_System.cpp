@@ -22,7 +22,7 @@ int User_System()
     User r;
     while (!fin.eof())
     {
-      fin>>r.code>>r.name>>r.password;
+      fin>>r.code>>r.name>>r.password>>r.Budget;
       counter++;
       Current_User.push_back(r);
     }
@@ -100,7 +100,7 @@ int User_System()
           cout<<"Not the same"<<endl;
         }
       }
-      fout<<counter<<endl<<New_User.name<<endl<<New_User.password<<endl;
+      fout<<counter<<endl<<New_User.name<<endl<<New_User.password<<-1<<endl;
       cout<<"New User Registered!"<<endl;
     }
     fin.close();
