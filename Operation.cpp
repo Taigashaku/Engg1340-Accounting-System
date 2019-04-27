@@ -182,7 +182,7 @@ int Operation(int User_ID)
       if (statistic==2){
         cout << "Please input the new budget." << endl;
         cin >> budget;
-        cout << "Your update budget is $" << budget << endl;
+        cout << "Your updated budget is $" << budget << endl;
       }
     }
 
